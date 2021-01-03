@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block body %}
+  <form action="/admin/product/launch" method="post" enctype="multipart/form-data">
+    <label for="name"> Name</label>
+    <input type="text" name="name" minlength="1" maxlength="49">
+    <br>
+    <label for="price"> Price</label>
+    <input type="number" step="0.01" name="price" min="0.01" max="500.00">
+    <br>
+    <label for="stock"> Stock Count</label>
+    <input type="number" name="stock" min="1" max="999">
+    <br>
+    <textarea name="description">Enter text here...</textarea>
+    <textarea name="instructions">Enter text here...</textarea>
+    {% for ingredient in ingredients %}
+      <input type="checkbox" id="{{ loop.index }}" name="ingredients" value="{{ ingredient }}">
+      <label for="{{ loop.index }}"> {{ ingredient }}</label><br>
+    {% endfor %}
+    <br>
+    <input type="file" name="image" accept="image/*" id="image">
+    <input type='submit' value='Publish'></input>
+  </form>
+{% endblock %}

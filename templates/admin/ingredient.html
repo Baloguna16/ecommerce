@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block body %}
+  <form action="/admin/add_ingredient" method="post" enctype="multipart/form-data">
+    <label for="name"> Name</label>
+    <input type="text" name="name" minlength="1" maxlength="49">
+    <br>
+    <label for="source"> Source</label>
+    <input type="text" name="source" minlength="1" maxlength="49">
+
+    <input type="file" name="image" accept="image/*" id="image">
+    <input type='submit' value='Publish'></input>
+  </form>
+{% endblock %}

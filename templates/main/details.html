@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block body %}
+  <p>I like cheese and details</p>
+  <p>Product Name: {{ product.name }}</p>
+  <p>Product Price: {{ product.get_price() }}</p>
+  <p>Product Stock: {{ product.stock }}</p>
+  <p>Product Details: {{ product.details.description }}</p>
+  <p>Product Instructions: {{ product.details.instructions }}</p>
+  <a href="/shop/p.{{ product.id }}/add">add to cart</a>
+  <img src="{{ product_link }}/{{ product.id }}.jpg" alt="{{ product.name }}">
+{% endblock %}

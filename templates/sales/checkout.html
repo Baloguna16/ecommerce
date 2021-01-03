@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block body %}
+  <p>this is your Cart</p>
+  {% for product in products %}
+    <p>Product Name: {{ product.name }}</p>
+    <p>Product Price: {{ product.get_price() }}</p>
+    <p>Quantity: {{ quantities[product.id] }}</p>
+    <a href="/shop/p.{{ product.id }}">go to details</a>
+    <br>
+    <br>
+    <a href="/shop/p.{{ product.id }}/add">plus</a>
+    <a href="/shop/p.{{ product.id }}/drop">minus</a>
+    <br>
+    <br>
+    <a href="/checkout/p.{{ product.id }}/remove">remove from cart</a>
+  {% endfor %}
+  <p>Total Bill: {{ cart.total_cost }}</p>
+	<form name="topaypal" action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+		<input type="hidden" name="cmd" value="_xclick">
+		<input type="hidden" name="custom" value="{{ user.name }}"/>
+		<input type="hidden" name="business" id="business" value="sb-uaeau2978633@business.example.com">
+		<input type="hidden" name="item_name" value="Shopping from Store">
+		<input type="hidden" name="item_number" value="1">
+		<input type="hidden" name="no_shipping" value="1">
+		<input type="hidden" name="amount" value="{{ '{:,.2f}'.format(cart.total_cost) }}">
+		<input type="hidden" name="return" value="http://127.0.0.1:5000/checkout/complete">
+		<input type="hidden" name="cancel_return" value="http://127.0.0.1:5000/">
+		<input type="hidden" name="notify_url" value="http://127.0.0.1:5000/checkout/ipn">
+		<input type="submit" value="Pay Now" name="submit" title="PayPal - The safer, easier way to pay online!">
+	</form>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block body %}
+  <p>inventory</p>
+  {% for product in products %}
+    <p>Product Name: {{ product.name }}</p>
+    <p>Product Price: {{ product.get_price() }}</p>
+    <p>Product Stock: {{ product.stock }}</p>
+    <a href="/admin/p.{{ product.id }}/edit">edit product</a>
+    <br>
+    <a href="/admin/p.{{ product.id }}/delete">delete product</a>
+  {% endfor %}
+{% endblock %}

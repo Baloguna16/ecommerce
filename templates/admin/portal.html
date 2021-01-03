@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block body %}
+  <p>Welcome oh esteemed admin!</p>
+  <p>Admin Name: {{ user.name }}</p>
+
+  <a href="/admin/product/launch">Launch new item</a>
+  <br>
+  <a href="/admin/products">View inventory</a>
+  <br>
+  <a href="/admin/ingredients">View ingredients</a>
+{% endblock %}

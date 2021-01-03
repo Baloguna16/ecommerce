@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block body %}
+  <p>I like cheese</p>
+  {% if user.is_authenticated %}
+    <a href="/logout">Logout</a>
+  {% else %}
+    <a href="/login">Login</a>
+  {% endif %}
+  <a href="/shop">Shop now</a>
+{% endblock %}

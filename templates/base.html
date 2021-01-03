@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  </head>
+  <body>
+    <header>
+      <nav>
+      </nav>
+      {% for message in get_flashed_messages() %}
+        <p>{{ message }}</p>
+      {% endfor %}
+    </header>
+    <main>
+      {% block body %}{% endblock %}
+    </main>
+    <footer>
+    </footer>
+  </body>
+</html>

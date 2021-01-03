@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block body %}
+  <p>inventory</p>
+  {% for ingredient in ingredients %}
+    <p>Product Name: {{ ingredient.name }}</p>
+    <p>Product Price: {{ ingredient.source }}</p>
+    <a href="/admin/delete_i.{{ ingredient.id }}">delete ingredient</a>
+    <img src="{{ ingredient_link }}/{{ ingredient.id }}.jpg" alt="{{ ingredient.name }}">
+  {% endfor %}
+{% endblock %}

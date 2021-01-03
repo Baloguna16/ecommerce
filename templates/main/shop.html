@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block body %}
+  <p>I like cheese and shopping</p>
+  {% for product in products %}
+    <p>Product Name: {{ product.name }}</p>
+    <p>Product Price: {{ product.get_price() }}</p>
+    <p>Product Stock: {{ product.stock }}</p>
+    <a href="/shop/p.{{ product.id }}">go to details</a>
+  {% endfor %}
+{% endblock %}

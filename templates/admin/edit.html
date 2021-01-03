@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block body %}
+  <form action="/admin/p.{{ product.id }}/edit" method="post">
+    {{ form.csrf_token }}
+    {{ wtf.form_field(form.name, class='form-control') }}
+    {{ wtf.form_field(form.price, class='form-control') }}
+    {{ wtf.form_field(form.stock, class='form-control') }}
+    <input type='submit' value='Publish'></input>
+  </form>
+{% endblock %}
